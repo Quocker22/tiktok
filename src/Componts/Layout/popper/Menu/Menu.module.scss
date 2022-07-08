@@ -11,6 +11,11 @@
         border: 0;
         font-weight: 600;
         padding: 11px 16px;
+
+        &.separate {
+            border-top: 1px solid rgba(22, 24, 35, 0.12);
+        }
+
         &:hover {
             background: rgba(22, 24, 35, 0.03);
         }
@@ -19,4 +24,24 @@
 
 .menu-popper {
     padding-bottom: 8px;
+}
+
+//header
+
+.header {
+    display: flex;
+    height: 50px;
+    margin-top: -8px;
+}
+
+.Btn-back {
+    width: 50px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.header-title {
+    margin: auto;
+    font-size: 1.6rem;
 }

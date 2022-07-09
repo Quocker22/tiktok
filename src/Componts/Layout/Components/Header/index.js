@@ -13,7 +13,8 @@ import 'tippy.js/dist/tippy.css';
 import { Wrapper as PopperWrapper } from '@/Componts/Layout/popper';
 import AccountsItem from '@/Componts/Layout/Components/AccountsItem';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
-
+import { MessageIcon, InboxIcon, UploadIcon } from '@/Componts/icons';
+import Image from '@/Componts/img';
 const cx = classNames.bind(style)
 
 const MENU_ITEMS = [
@@ -102,6 +103,7 @@ function Header() {
         },
     ]
 
+    const notification = 111;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')} >
@@ -139,9 +141,32 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 300]} content='Upload video' placement='bottom'>
+                            <Tippy
+                                content='Upload video'
+                                placement='bottom'
+                            >
                                 <button className={cx('action-btn')} >
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+
+                            <Tippy
+                                content='Message'
+                                placement='bottom'
+                            >
+                                <button className={cx('action-btn')} >
+                                    <MessageIcon />
+
+                                </button>
+                            </Tippy>
+
+                            <Tippy
+                                content='InBox'
+                                placement='bottom'
+                            >
+                                <button className={cx('action-btn')} >
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>{notification < 99 ? notification : 99}</span>
                                 </button>
                             </Tippy>
                         </>
@@ -155,9 +180,11 @@ function Header() {
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
 
                         {currentUser ? (
-                            <img className={cx('user-avartar')}
+                            <Image className={cx('user-avartar')}
                                 src='https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/274664884_1007804556837758_2729035192511481397_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=dE8YBo7sphkAX_7MNHJ&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT_d9OHZhfJfvUbVEaKApEUkdHvZ5g3SXAf6yttLUf7ykg&oe=62CBED2C'
-                                alt='Binh Nhu Ngo' />
+                                alt='Binh Nhu Ngo'
+                                fallback='https://static.fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
+                            />
                         ) : (
                             <button className={cx('more-btn')} >
                                 <FontAwesomeIcon icon={faEllipsisVertical} />

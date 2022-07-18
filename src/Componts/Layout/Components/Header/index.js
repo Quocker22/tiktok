@@ -1,16 +1,18 @@
 import classNames from 'classnames/bind';
-import style from './Header.module.scss'
+import { faChartLine, faCircleQuestion, faEllipsisVertical, faGear, faGlobe, faHouseChimneyUser, faKeyboard, faRightToBracket, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+import Tippy from '@tippyjs/react';
+import { Link } from 'react-router-dom';
+import routesConfig from '@/config/routes'
 import Menu from '../../popper/Menu';
 import Search from '../search';
 import Button from '../button';
 import images from '@/assets/imgs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faCircleQuestion, faEllipsisVertical, faGear, faGlobe, faHouseChimneyUser, faKeyboard, faRightToBracket, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { MessageIcon, InboxIcon, UploadIcon } from '@/Componts/icons';
 import Image from '@/Componts/img';
+import style from './Header.module.scss'
 
 const cx = classNames.bind(style)
 
@@ -97,8 +99,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')} >
-                <img className={cx('img-logo')}
-                    src={images.logo} alt='TikTok' />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img className={cx('img-logo')}
+                        src={images.logo} alt='TikTok'
+                    />
+                </Link>
 
                 <Search />
 
@@ -147,7 +152,7 @@ function Header() {
                             <Image className={cx('user-avartar')}
                                 src='https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/274664884_1007804556837758_2729035192511481397_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=dE8YBo7sphkAX_7MNHJ&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT_d9OHZhfJfvUbVEaKApEUkdHvZ5g3SXAf6yttLUf7ykg&oe=62CBED2C'
                                 alt='Binh Nhu Ngo'
-                                fallback='https://static.fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
+                                fallback={images.avatar}
                             />
                         ) : (
                             <button className={cx('more-btn')} >

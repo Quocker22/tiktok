@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [], onChange }) {
+function Menu({ children, items = [], hideOnClick = false, onChange }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
@@ -28,6 +28,7 @@ function Menu({ children, items = [], onChange }) {
 
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             interactive
             offset={[12, 8]}
             delay={[0, 700]}

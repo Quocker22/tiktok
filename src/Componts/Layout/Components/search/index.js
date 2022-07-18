@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import style from './Search.module.scss'
 import { SearchIcon } from '@/Componts/icons';
+import { useDebounce } from '@/hooks';
+import * as searchService from '@/apiServices/searchServices';
 
 const cx = classNames.bind(style)
 
@@ -17,31 +19,30 @@ function Search() {
     const [showResult, setShowResult] = useState(false)
     const [showLoading, setShowLoading] = useState(false)
 
+    const debounce = useDebounce(searchValue, 500)
+
     const inputRef = useRef()
 
     useEffect(() => {
-        if (!searchValue) {
+        if (!debounce) {
             setSearchResult([])
-            return
+            return;
         }
-        setShowLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then(reps => reps.json())
-            .then(res => {
-                setSearchResult(res.data)
-                setShowLoading(false)
-            })
-            .catch(() => { setShowLoading(true) })
-    }, [searchValue])
 
+        const fetchApi = async () => {
+            setShowLoading(true)
+            const result = await searchService.search(debounce)
+            setSearchResult(result)
+            setShowLoading(false)
+        }
+        fetchApi()
 
+    }, [debounce])
 
     const handleClear = () => {
         setSearchValue('')
         inputRef.current.focus()
         setSearchResult([])
-
-
     }
 
     const handleHideSearch = () => {

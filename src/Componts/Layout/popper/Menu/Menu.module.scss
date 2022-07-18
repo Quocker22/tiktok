@@ -2,6 +2,7 @@
 
 .menu_list {
     width: 224px;
+
     .menu_item {
         margin-left: 0 !important;
         color: var(--text-color);
@@ -24,14 +25,19 @@
 
 .menu-popper {
     padding-bottom: 8px;
+    
 }
 
+.menu-body {
+    overflow-y: auto;
+}
 //header
 
 .header {
     display: flex;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .Btn-back {

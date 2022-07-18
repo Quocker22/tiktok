@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [], hideOnClick = false, onChange }) {
+function Menu({ children, items = [], hideOnClick = false, onChange, ...passProps }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
@@ -28,6 +28,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange }) {
 
     return (
         <Tippy
+            {...passProps}
             hideOnClick={hideOnClick}
             interactive
             offset={[12, 8]}
@@ -39,7 +40,9 @@ function Menu({ children, items = [], hideOnClick = false, onChange }) {
                         {history.length > 1 && <Header title="Language" onBack={() => {
                             setHistory(pre => pre.slice(0, pre.length - 1))
                         }} />}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>
+                            {renderItems()}
+                        </div>
                     </PopperWrapper>
                 </div>
             )}

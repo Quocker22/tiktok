@@ -1,5 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
-import { Wrapper as PopperWrapper } from '@/Componts/Layout/popper';
+import { Wrapper as PopperWrapper } from '@/Layout/popper';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import MenuIcon from "./Menuicon";

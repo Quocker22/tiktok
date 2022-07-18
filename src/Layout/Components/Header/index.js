@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { faChartLine, faCircleQuestion, faEllipsisVertical, faGear, faGlobe, faHouseChimneyUser, faKeyboard, faRightToBracket, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import { Link } from 'react-router-dom';
-import routesConfig from '@/config/routes'
+import Config from '@/config'
 import Menu from '../../popper/Menu';
 import Search from '../search';
 import Button from '../button';
@@ -10,8 +10,8 @@ import images from '@/assets/imgs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'tippy.js/dist/tippy.css';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
-import { MessageIcon, InboxIcon, UploadIcon } from '@/Componts/icons';
-import Image from '@/Componts/img';
+import { MessageIcon, InboxIcon, UploadIcon } from '@/Components/icons';
+import Image from '@/Components/img';
 import style from './Header.module.scss'
 
 const cx = classNames.bind(style)
@@ -99,7 +99,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')} >
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={Config.routes.home} className={cx('logo-link')}>
                     <img className={cx('img-logo')}
                         src={images.logo} alt='TikTok'
                     />

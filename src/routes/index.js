@@ -9,7 +9,7 @@ import Search from '@/pages/Search';
 const publicRoutes = [
     { path: '/', component: Home },
     { path: '/Following', component: Following },
-    { path: '/profile', component: Profile },
+    { path: '/@:nickName', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnly },
     { path: '/search', component: Search, layout: null }
 ]

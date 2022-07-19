@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -22,6 +23,10 @@ function AccountsItem({ data }) {
             </div>
         </Link>
     )
+}
+
+AccountsItem.propTypes = {
+    data: PropTypes.object.isRequired
 }
 
 export default AccountsItem;

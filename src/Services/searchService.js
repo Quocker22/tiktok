@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import * as httpRequest from '@/utils/httpRequest';
 
 
@@ -13,4 +14,9 @@ export const search = async (q, type = 'less') => {
     } catch (error) {
         console.log(error);
     }
+}
+
+search.propTypes = {
+    q: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired
 }

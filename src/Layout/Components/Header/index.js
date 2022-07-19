@@ -95,7 +95,7 @@ function Header() {
         },
     ]
 
-    const notification = 1123123;
+    const notification = 12;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')} >
